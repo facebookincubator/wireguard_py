@@ -1,0 +1,43 @@
+name: Publish to PyPI
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-and-push-sdist:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.x"
+    - name: Install pypa/build/cython
+      run: >-
+        python3 -m
+        pip install
+        build
+        cython
+        setuptools
+        --user
+    - name: Update version
+      run: >-
+        sed -i "s/trunk/$GITHUB_REF_NAME/g" wireguard_py/__init__.py
+    - name: Build a source dist
+      run: >-
+        python -m build --sdist
+    - name: Publish distribution to TestPyPI
+      if: "github.event.release.prerelease"
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+        repository-url: https://test.pypi.org/legacy/
+    - name: Publish distribution to PyPI
+      if: "!github.event.release.prerelease"
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        password: ${{ secrets.PYPI_API_TOKEN }}

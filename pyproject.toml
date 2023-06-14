@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools", "cython"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wireguard-py"
+readme = "README.md"
+dynamic = ["version"]
+authors = [
+  { name="Eric Schwimmer", email="schwim@meta.com" },
+  { name="Richard Ross", email="richardross@meta.com" }
+]
+description = "Cython library to manage Wireguard configuration"
+requires-python = ">=3"
+dependencies = ["click"]
+classifiers = [
+        "Development Status :: 5 - Production/Stable",
+        "Environment :: Console",
+        "Environment :: No Input/Output (Daemon)",
+        "Intended Audience :: Developers",
+        "Intended Audience :: System Administrators",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "wireguard_py.__version__"}
+
+[project.urls]
+"Homepage" = "https://github.com/facebookincubator/wireguard_py"
+"Bug Tracker" = "https://github.com/facebookincubator/wireguard_py/issues"
