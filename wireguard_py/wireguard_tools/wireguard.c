@@ -1404,6 +1404,8 @@ static void coalesce_peers(wg_device *device)
 		peer->next_peer = old_next_peer->next_peer;
 		free(old_next_peer);
 	}
+
+    device->last_peer = peer;
 }
 
 int wg_get_device(wg_device **device, const char *device_name)

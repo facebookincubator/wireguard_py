@@ -50,7 +50,7 @@ cdef extern from "netinet/in.h":
 
 
 cdef extern from "wireguard_py/wireguard_tools/wireguard.h":
-    ctypedef int[32] wg_key
+    ctypedef unsigned char[32] wg_key
     ctypedef char[45] wg_key_b64_string
 
     cdef struct timespec64:
