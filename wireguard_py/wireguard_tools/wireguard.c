@@ -1463,7 +1463,7 @@ char *wg_list_device_names(void)
 		free(list.buffer);
 		return NULL;
 	}
-	return list.buffer ?: strdup("\0");
+	return list.buffer ? list.buffer : strdup("\0");
 }
 
 int wg_add_device(const char *device_name)
