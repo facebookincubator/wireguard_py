@@ -80,6 +80,9 @@ cdef extern from "wireguard_py/wireguard_tools/wireguard.h":
         int flags
         wg_key public_key
         wg_endpoint endpoint
+        struct timespec64 last_handshake_time
+        uint64_t rx_bytes
+        uint64_t tx_bytes
         wg_allowedip *first_allowedip
         wg_allowedip *last_allowedip
         wg_peer *next_peer

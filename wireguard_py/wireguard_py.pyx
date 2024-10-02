@@ -314,7 +314,7 @@ def list_peers(device_name: bytes) -> List[Peer]:
                     allowedip = allowedip.next_allowedip
             
             # Add last_handshake_time, rx_bytes, and tx_bytes
-            peer_py.last_handshake_time = peer.last_handshake_time
+            peer_py.last_handshake_time = peer.last_handshake_time.tv_sec
             peer_py.rx_bytes = peer.rx_bytes
             peer_py.tx_bytes = peer.tx_bytes
 
