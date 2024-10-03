@@ -160,7 +160,7 @@ def list_peers(device_name) -> None:
         else:
             print("  allowed ips: (none)")
         if peer.last_handshake_time is not None:
-            print(f"  last handshake time: {peer.last_handshake}")
+            print(f"  last handshake time: {peer.last_handshake_time}")
         if peer.rx_bytes is not None:
             print(f"  rx bytes: {peer.rx_bytes}")
         if peer.tx_bytes is not None:
