@@ -27,6 +27,9 @@ class Peer:
     pubkey: str
     endpoint: Optional[Endpoint] = None
     allowed_ips: List[IPNetwork] = field(default_factory=list)
+    last_handshake_time: Optional[int] = None
+    rx_bytes: Optional[int] = None
+    tx_bytes: Optional[int] = None
 
     def __str__(self) -> str:
         return self.pubkey
