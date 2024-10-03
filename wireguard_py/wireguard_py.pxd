@@ -7,6 +7,9 @@ This software may be used and distributed according to the terms of the
 MIT License.
 """
 
+cdef extern from "stdint.h":
+    ctypedef unsigned long long uint64_t
+
 cdef extern from "net/if.h":
     cdef const int IFNAMSIZ
 
@@ -80,7 +83,7 @@ cdef extern from "wireguard_py/wireguard_tools/wireguard.h":
         int flags
         wg_key public_key
         wg_endpoint endpoint
-        struct timespec64 last_handshake_time
+        timespec64 last_handshake_time
         uint64_t rx_bytes
         uint64_t tx_bytes
         wg_allowedip *first_allowedip
