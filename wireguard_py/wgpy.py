@@ -106,6 +106,7 @@ def set_peer(
     if endpoint_str:
         try:
             ip, port = endpoint_str.rsplit(":", 1)
+            # pyre-fixme[9]: endpoint has type `Optional[str]`; used as `Endpoint`.
             endpoint = Endpoint(ip=ipaddress.ip_address(ip), port=int(port))
         except KeyError:
             raise click.UsageError("Endpoint must be in <ip>:<port> format")
@@ -116,6 +117,8 @@ def set_peer(
         device_name=device_name.encode(),
         pub_key=public_key.encode(),
         endpoint=endpoint,
+        # pyre-fixme[6]: For 4th argument expected `Optional[Set[Union[IPv4Network,
+        #  IPv6Network]]]` but got `List[Union[IPv4Network, IPv6Network]]`.
         allowed_ips=allowed_ips,
         replace_allowed_ips=replace_allowed_ips,
     )
@@ -142,6 +145,7 @@ def list_devices() -> None:
     """
     List all wireguard devices on this host
     """
+    # pyre-fixme[6]: For 1st argument expected `Iterable[LiteralString]` but got `None`.
     print("\n".join(wg.list_devices()))
 
 
