@@ -1,4 +1,6 @@
 # flake8: noqa
+
+# pyre-unsafe
 """
 Copyright (c) Meta Platforms, Inc. and affiliates.
 

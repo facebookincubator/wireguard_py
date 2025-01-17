@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+# pyre-unsafe
+
 """
 Copyright (c) Meta Platforms, Inc. and affiliates.
 
