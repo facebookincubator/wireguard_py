@@ -8,7 +8,7 @@ MIT License.
 
 from dataclasses import dataclass, field
 from ipaddress import IPv4Address, IPv4Network, IPv6Address, IPv6Network
-from typing import List, Optional, Union
+from typing import Union
 
 IPAddress = Union[IPv4Address, IPv6Address]
 IPNetwork = Union[IPv4Network, IPv6Network]
@@ -26,11 +26,11 @@ class Endpoint:
 @dataclass
 class Peer:
     pubkey: str
-    endpoint: Optional[Endpoint] = None
-    allowed_ips: List[IPNetwork] = field(default_factory=list)
-    last_handshake_time: Optional[int] = None
-    rx_bytes: Optional[int] = None
-    tx_bytes: Optional[int] = None
+    endpoint: Endpoint | None = None
+    allowed_ips: list[IPNetwork] = field(default_factory=list)
+    last_handshake_time: int | None = None
+    rx_bytes: int | None = None
+    tx_bytes: int | None = None
 
     def __str__(self) -> str:
         return self.pubkey

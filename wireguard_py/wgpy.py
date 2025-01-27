@@ -11,7 +11,6 @@ MIT License.
 
 import ipaddress
 import sys
-from typing import List, Optional
 
 import click
 
@@ -60,7 +59,7 @@ def get_pub_key():
 @click.option("--listen-port", type=int, help="Optional port to listen on")
 @click.option("--private-key", help="Optional private key to use")
 def set_device(
-    device_name: str, private_key: Optional[str], listen_port: Optional[int]
+    device_name: str, private_key: str | None, listen_port: int | None
 ) -> None:
     """
     Change the current device configuration
@@ -96,15 +95,15 @@ def set_device(
 def set_peer(
     device_name: str,
     public_key: str,
-    endpoint_str: Optional[str],
-    allowed_ip_strs: List[str],
+    endpoint_str: str | None,
+    allowed_ip_strs: list[str],
     replace_allowed_ips: bool,
 ) -> None:
     """
     Add/change a peer, identified by its public key, on a wireguard device
     """
 
-    endpoint: Optional[str] = None
+    endpoint: str | None = None
     if endpoint_str:
         try:
             ip, port = endpoint_str.rsplit(":", 1)
