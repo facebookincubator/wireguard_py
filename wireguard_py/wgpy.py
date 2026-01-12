@@ -13,9 +13,7 @@ import ipaddress
 import sys
 
 import click
-
 import wireguard_py as wg
-
 from wireguard_py.wireguard_common import Endpoint
 
 
