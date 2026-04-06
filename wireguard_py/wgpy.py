@@ -115,6 +115,7 @@ def set_peer(
     wg.set_peer(
         device_name=device_name.encode(),
         pub_key=public_key.encode(),
+        # pyrefly: ignore [bad-argument-type]
         endpoint=endpoint,
         # pyre-fixme[6]: For 4th argument expected `Optional[Set[Union[IPv4Network,
         #  IPv6Network]]]` but got `List[Union[IPv4Network, IPv6Network]]`.
