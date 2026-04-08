@@ -1,1 +1,0 @@
-global-include *.py *.md *.pyx *.pyi *.pxd *.c *.h LICENSE
